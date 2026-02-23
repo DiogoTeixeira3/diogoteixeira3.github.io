@@ -32,10 +32,9 @@ const projetos = [
         img: '../files/ChelasPokerDice.png',
     },
     {
-        nome: 'Projeto 5',
-        linguagens: ['React', 'Node.js'],
-        repo: 'https://github.com/DiogoTeixeira3/projeto5',
-        pdf: '../files/projeto5.pdf',
+        nome: 'My Portfolio',
+        linguagens: ['HTML', 'CSS', 'JavaScript'],
+        repo: 'https://github.com/DiogoTeixeira3/diogoteixeira3.github.io',
         img: '../files/projeto5.png',
     },
     {
@@ -71,7 +70,7 @@ export function renderProjects() {
                 <div class="linguagens">${badges}</div>
                 <div class="projeto-buttons">
                     <a href="${p.repo}" target="_blank">GitHub</a>
-                    <a href="${p.pdf}" target="_blank" class="pdf">PDF</a>
+                    ${p.pdf ? `<a href="${p.pdf}" target="_blank" class="pdf">PDF</a>` : ''}
                 </div>
             </div>
         `;
