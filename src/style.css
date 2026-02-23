@@ -9,7 +9,6 @@
 }
 
 :root {
-    --arrow-safe-space: 160px;
     --gap-projects: 30px;
 }
 
@@ -424,25 +423,12 @@ section h2 {
 /* ===========================
    Projects
    =========================== */
-#Projects {
-    padding-bottom: calc(var(--arrow-safe-space) + 20px);
-}
-
 #projetos-container {
     display: flex;
     flex-wrap: wrap;
     gap: var(--gap-projects);
     justify-content: center;
     position: relative;
-}
-
-/* Spacer to keep last row clear of the bottom arrow */
-#projetos-container::after {
-    content: "";
-    display: block;
-    height: var(--arrow-safe-space);
-    width: 100%;
-    pointer-events: none;
 }
 
 .projeto {
@@ -755,10 +741,6 @@ html {
         flex: 1 1 calc(50% - var(--gap-projects));
         max-width: 460px;
     }
-
-    :root {
-        --arrow-safe-space: 120px;
-    }
 }
 
 /* ===========================
@@ -783,9 +765,5 @@ html {
 
     .contact-card {
         width: 90%;
-    }
-
-    :root {
-        --arrow-safe-space: 100px;
     }
 }
