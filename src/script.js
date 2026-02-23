@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const projetos = [
     { nome: "Checkers", linguagens: ["Kotlin", "Compose"], repo: "https://github.com/DiogoTeixeira3/Checkers", pdf: "../files/Checkers.pdf", img: "../files/checkers.png" },
     { nome: "Padel Manager Website", linguagens: ["Kotlin", "SQL", "HTML", "CSS", "JavaScript"], repo: "https://github.com/DiogoTeixeira3/Padel-Manager.git", pdf: "../files/Padel-Manager.pdf", img: "../files/padel.png" },
-    { nome: "Chelas Poker Dice Website", linguagens: ["React", "Spring", "TypeScript", "Kotlin", "Vite", "CSS"], repo: "https://github.com/DiogoTeixeira3/Chelas-Poker-Dice-Website.git", pdf: "../files/project-requirements.pdf", img: "../files/ChelasPokerDice.png" },
+    { nome: "Chelas Poker Dice Website", linguagens: ["React", "Spring", "TypeScript", "Kotlin", "Vite", "CSS", "HTML"], repo: "https://github.com/DiogoTeixeira3/Chelas-Poker-Dice-Website.git", pdf: "../files/project-requirements.pdf", img: "../files/ChelasPokerDice.png" },
     { nome: "Chelas Poker Dice Android App", linguagens: ["Kotlin", "Ngrok", "Android Studio"], repo: "https://github.com/DiogoTeixeira3/Chelas-Poker-Dice-App.git", pdf: "../files/ChelasPokerDiceApp.pdf", img: "../files/ChelasPokerDice.png" },
     { nome: "Projeto 5", linguagens: ["React", "Node.js"], repo: "https://github.com/DiogoTeixeira3/projeto5", pdf: "../files/projeto5.pdf", img: "../files/projeto5.png" },
     { nome: "Connect Four", linguagens: ["Kotlin"], repo: "https://github.com/DiogoTeixeira3/ConnectFour.git", pdf: "../files/ConnectedFour.pdf", img: "../files/ConnectFour.png" }
@@ -135,5 +135,59 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.classList.toggle('light-mode');
     themeToggle.textContent = document.body.classList.contains('light-mode') ? '🌙' : '🌞';
   });
+
+  // --- Contact Form: Send Message via Formspree ---
+  const FORMSPREE_ID = 'mvzbvqpb';
+
+  const contactForm = document.getElementById('contactForm');
+  const formStatus  = document.getElementById('form-status');
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = this.querySelector('button[type="submit"]');
+      const name    = document.getElementById('nome').value.trim();
+      const email   = document.getElementById('email').value.trim();
+      const message = document.getElementById('mensagem').value.trim();
+      if (!name || !email || !message) return;
+
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+      formStatus.textContent = '';
+      formStatus.className = '';
+
+      if (FORMSPREE_ID === 'YOUR_FORM_ID') {
+        formStatus.textContent = 'Form not configured yet. Please set up Formspree.';
+        formStatus.className = 'form-error';
+        btn.textContent = 'Send Message';
+        btn.disabled = false;
+        return;
+      }
+
+      try {
+        const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(this)
+        });
+        if (res.ok) {
+          this.reset();
+          formStatus.textContent = ' Message sent! Thank you for reaching out.';
+          formStatus.className = 'form-success';
+        } else {
+          const data = await res.json();
+          const err = data.errors ? data.errors.map(x => x.message).join(', ') : 'Something went wrong.';
+          formStatus.textContent = `${err}`;
+          formStatus.className = 'form-error';
+        }
+      } catch (err) {
+        formStatus.textContent = 'Network error – please try again.';
+        formStatus.className = 'form-error';
+      } finally {
+        btn.textContent = 'Send Message';
+        btn.disabled = false;
+      }
+    });
+  }
 
 });

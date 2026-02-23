@@ -1,4 +1,6 @@
-/* Reset básico */
+/* ===========================
+   Reset & Variables
+   =========================== */
 * {
     margin: 0;
     padding: 0;
@@ -6,12 +8,14 @@
     font-family: 'Orbitron', sans-serif;
 }
 
-:root{
-    --arrow-safe-space: 160px; /* espaço reservado no fundo para a seta */
+:root {
+    --arrow-safe-space: 160px;
     --gap-projects: 30px;
 }
 
-/* Body */
+/* ===========================
+   Base / Body
+   =========================== */
 body {
     background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
     color: #eee;
@@ -19,54 +23,127 @@ body {
     transition: background 0.5s, color 0.5s;
 }
 
-/* Dark/Light Mode */
+/* ===========================
+   Light Mode Overrides
+   =========================== */
+
+/* Body */
 body.light-mode {
-    background: linear-gradient(135deg, #ffffff, #f5f5f5);
+    background: linear-gradient(135deg, #f0eaf8, #e8d5f7);
     color: #111;
 }
 
+/* Header – purple gradient instead of plain white */
 body.light-mode header {
-    background: #ffffff;
+    background: linear-gradient(145deg, #7b1fa2, #ce93d8);
 }
 
-body.light-mode header nav ul li a {
+body.light-mode header h1 {
     color: #fff;
-    background: #6a0dad;
 }
 
+body.light-mode .header-mini {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Nav links */
+body.light-mode header nav ul li a {
+    background: #6a0dad;
+    color: #fff;
+}
+
+/* Section headings */
+body.light-mode section h2 {
+    color: #6a0dad;
+}
+
+/* About / Project card backgrounds */
 body.light-mode .about-personal,
 body.light-mode .about-education,
 body.light-mode .about-skills,
 body.light-mode .projeto,
 body.light-mode .contact-card {
-    background: #f0f0f0;
+    background: #f5eeff;
     color: #111;
+    box-shadow: 0 0 15px rgba(106, 13, 173, 0.15);
 }
 
+/* Card headings */
+body.light-mode .about-personal h3,
+body.light-mode .about-education h3,
+body.light-mode .about-skills h3,
+body.light-mode .projeto h3,
+body.light-mode .social-card h3 {
+    color: #6a0dad;
+}
+
+/* "More" button */
 body.light-mode .ver-mais {
     background: #6a0dad;
 }
 
+/* Skill & language badges */
+body.light-mode .skill,
+body.light-mode .linguagem {
+    background: #7b2fbe;
+    color: #fff;
+}
+
+/* Form inputs */
 body.light-mode form input,
 body.light-mode form textarea {
-    background: #e5e5e5;
+    background: #ede0f7;
     color: #111;
+    border: 1px solid #c9a8e0;
 }
 
 body.light-mode form input:focus,
 body.light-mode form textarea:focus {
-    background: #d1d1d1;
+    background: #dfc8f5;
+    border-color: #7b2fbe;
 }
 
+/* Form submit button */
 body.light-mode form button {
     background: linear-gradient(135deg, #6a0dad, #c70039);
     color: #fff;
 }
 
-/* Header */
+/* Social buttons */
+body.light-mode .social-buttons a {
+    background: #ede0f7;
+    color: #333;
+    border: 1px solid #c9a8e0;
+}
+
+body.light-mode .social-buttons a:hover {
+    background: #dfc8f5;
+    box-shadow: 0 0 15px rgba(106, 13, 173, 0.3);
+}
+
+/* Footer */
+body.light-mode footer {
+    background: #dfc8f5;
+    color: #444;
+}
+
+/* Navigation arrows */
+body.light-mode .seta-cima,
+body.light-mode .seta-baixo {
+    color: #6a0dad;
+}
+
+body.light-mode .seta-cima:hover,
+body.light-mode .seta-baixo:hover {
+    color: #9c27b0;
+}
+
+/* ===========================
+   Header
+   =========================== */
 header {
     background: linear-gradient(145deg, #69019c, #000);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -97,7 +174,9 @@ header h1 {
     max-width: 500px;
 }
 
-/* Nav links */
+/* ===========================
+   Navigation
+   =========================== */
 header nav ul {
     list-style: none;
     display: flex;
@@ -116,7 +195,7 @@ header nav ul li a {
     font-weight: bold;
     position: relative;
     overflow: hidden;
-    transition: 0.4s;
+    transition: box-shadow 0.4s;
 }
 
 header nav ul li a::before {
@@ -126,9 +205,9 @@ header nav ul li a::before {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: rgba(255,112,166,0.3);
+    background: rgba(255, 112, 166, 0.3);
     transform: skewX(-20deg);
-    transition: 0.5s;
+    transition: left 0.5s;
 }
 
 header nav ul li a:hover::before {
@@ -136,10 +215,12 @@ header nav ul li a:hover::before {
 }
 
 header nav ul li a:hover {
-    box-shadow: 0 0 15px rgba(255,112,166,0.7);
+    box-shadow: 0 0 15px rgba(255, 112, 166, 0.7);
 }
 
-/* Botão Dark/Light Mode */
+/* ===========================
+   Theme Toggle Button
+   =========================== */
 .theme-toggle {
     position: fixed;
     top: 20px;
@@ -154,7 +235,7 @@ header nav ul li a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: 0.3s, background 0.3s;
+    transition: background 0.3s;
     z-index: 1500;
 }
 
@@ -162,7 +243,9 @@ header nav ul li a:hover {
     background: rgba(255, 255, 255, 0.5);
 }
 
-/* Main Sections */
+/* ===========================
+   Main & Sections
+   =========================== */
 main {
     max-width: 1100px;
     margin: auto;
@@ -177,7 +260,15 @@ section {
     padding: 40px 20px;
 }
 
-/* About Me */
+section h2 {
+    margin-bottom: 5px;
+    color: #c38fff;
+    font-size: 2rem;
+}
+
+/* ===========================
+   About Me
+   =========================== */
 .about-container {
     display: flex;
     flex-wrap: wrap;
@@ -186,12 +277,14 @@ section {
     margin-top: 20px;
 }
 
-.about-personal, .about-education, .about-skills {
+.about-personal,
+.about-education,
+.about-skills {
     background: #1e0d3f;
     border-radius: 15px;
-    padding: 20px;
+    padding: 20px 20px 40px;
     flex: 1 1 300px;
-    box-shadow: 0 0 15px rgba(195,143,255,0.4);
+    box-shadow: 0 0 15px rgba(195, 143, 255, 0.4);
     position: relative;
     max-height: 220px;
     overflow: hidden;
@@ -199,14 +292,13 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding-bottom: 40px;
 }
 
 .about-personal:hover,
 .about-education:hover,
 .about-skills:hover {
     transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 0 40px rgba(255,112,166,0.8);
+    box-shadow: 0 0 40px rgba(255, 112, 166, 0.8);
 }
 
 .about-personal h3,
@@ -215,7 +307,8 @@ section {
     margin-bottom: 10px;
 }
 
-.about-personal p, .about-education p {
+.about-personal p,
+.about-education p {
     flex: 1;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -225,12 +318,14 @@ section {
     white-space: normal;
 }
 
-.about-personal.expanded p, .about-education.expanded p {
+.about-personal.expanded p,
+.about-education.expanded p {
     -webkit-line-clamp: unset;
     display: block;
     overflow: visible;
 }
 
+/* "More / Close" button */
 .ver-mais {
     align-self: flex-end;
     padding: 7px 12px;
@@ -241,7 +336,7 @@ section {
     bottom: 10px;
     right: 10px;
     overflow: hidden;
-    transition: 0.4s;
+    transition: box-shadow 0.4s;
     cursor: pointer;
     background: #6a0dad;
     border: none;
@@ -254,20 +349,22 @@ section {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: rgba(195,143,255,0.3);
+    background: rgba(195, 143, 255, 0.3);
     transform: skewX(-20deg);
-    transition: 0.5s;
+    transition: left 0.5s;
 }
 
 .ver-mais:hover::before {
     left: 100%;
 }
 
-.about-personal.expanded .ver-mais, .about-education.expanded .ver-mais {
+.about-personal.expanded .ver-mais,
+.about-education.expanded .ver-mais {
     background: #c70039;
 }
 
-.about-personal.expanded, .about-education.expanded {
+.about-personal.expanded,
+.about-education.expanded {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -281,13 +378,11 @@ section {
     transition: transform 0.6s ease, box-shadow 0.6s ease;
 }
 
-/* Skills Box */
+/* ===========================
+   Skills
+   =========================== */
 .about-skills {
-    background: #1e0d3f;
-    border-radius: 15px;
-    padding: 20px;
     flex: 1 1 100%;
-    box-shadow: 0 0 15px rgba(195,143,255,0.4);
     text-align: center;
     margin-top: 20px;
     overflow: hidden;
@@ -324,9 +419,10 @@ section {
     }
 }
 
-/* Projetos - garantias extras para não colar na seta */
+/* ===========================
+   Projects
+   =========================== */
 #Projects {
-    /* Padding adicional para que a secção termine acima da seta */
     padding-bottom: calc(var(--arrow-safe-space) + 20px);
 }
 
@@ -338,7 +434,7 @@ section {
     position: relative;
 }
 
-/* spacer for the last-row safe area (guarantees visual gap independent do layout flex) */
+/* Spacer to keep last row clear of the bottom arrow */
 #projetos-container::after {
     content: "";
     display: block;
@@ -347,25 +443,23 @@ section {
     pointer-events: none;
 }
 
-/* Project card */
 .projeto {
     background: #1e0d3f;
     border-radius: 15px;
     flex: 1 1 calc(33.333% - var(--gap-projects));
     max-width: 300px;
-    margin-bottom: 0; /* usamos spacer ::after para controlar o espaço final */
     overflow: hidden;
-    box-shadow: 0 0 20px rgba(195,143,255,0.5);
+    box-shadow: 0 0 20px rgba(195, 143, 255, 0.5);
     transition: transform 0.3s, box-shadow 0.3s;
     display: flex;
     flex-direction: column;
-    position: relative; /* evita stacking context imprevisível sobre a seta */
+    position: relative;
     z-index: 1;
 }
 
 .projeto:hover {
     transform: translateY(-10px);
-    box-shadow: 0 0 40px rgba(255,112,166,0.8);
+    box-shadow: 0 0 40px rgba(255, 112, 166, 0.8);
 }
 
 .projeto img {
@@ -377,6 +471,8 @@ section {
 .projeto-content {
     padding: 15px;
     flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .projeto h3 {
@@ -397,12 +493,13 @@ section {
     padding: 3px 7px;
     border-radius: 5px;
     font-size: 0.85rem;
-    box-shadow: 0 0 5px rgba(255,255,255,0.2);
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
 }
 
 .projeto-buttons {
     display: flex;
     justify-content: space-between;
+    margin-top: auto;
 }
 
 .projeto-buttons a {
@@ -413,7 +510,7 @@ section {
     color: #fff;
     position: relative;
     overflow: hidden;
-    transition: 0.4s;
+    transition: box-shadow 0.4s;
 }
 
 .projeto-buttons a::before {
@@ -423,9 +520,9 @@ section {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: rgba(195,143,255,0.3);
+    background: rgba(195, 143, 255, 0.3);
     transform: skewX(-20deg);
-    transition: 0.5s;
+    transition: left 0.5s;
 }
 
 .projeto-buttons a:hover::before {
@@ -440,13 +537,15 @@ section {
     background: #c70039;
 }
 
-/* Contact Me */
+/* ===========================
+   Contact Me
+   =========================== */
 .contact-container {
     display: flex;
     flex-wrap: wrap;
     gap: 40px;
     justify-content: center;
-    align-items: flex-start;
+    align-items: stretch;
     margin-top: 20px;
 }
 
@@ -455,7 +554,7 @@ section {
     border-radius: 20px;
     padding: 30px;
     flex: 1 1 400px;
-    box-shadow: 0 0 25px rgba(195,143,255,0.4);
+    box-shadow: 0 0 25px rgba(195, 143, 255, 0.4);
     display: flex;
     flex-direction: column;
     transition: transform 0.3s, box-shadow 0.3s;
@@ -463,14 +562,15 @@ section {
 
 .contact-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 0 50px rgba(255,112,166,0.6);
+    box-shadow: 0 0 50px rgba(255, 112, 166, 0.6);
 }
 
 form .form-group {
     margin-bottom: 20px;
 }
 
-form input, form textarea {
+form input,
+form textarea {
     width: 100%;
     padding: 15px 20px;
     border-radius: 12px;
@@ -478,13 +578,14 @@ form input, form textarea {
     background: #2b1a3f;
     color: #fff;
     font-size: 1rem;
-    transition: 0.3s;
+    transition: background 0.3s, box-shadow 0.3s;
 }
 
-form input:focus, form textarea:focus {
+form input:focus,
+form textarea:focus {
     outline: none;
     background: #3a2670;
-    box-shadow: 0 0 10px rgba(255,112,166,0.5);
+    box-shadow: 0 0 10px rgba(255, 112, 166, 0.5);
 }
 
 form textarea {
@@ -506,7 +607,35 @@ form button {
 
 form button:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(255,112,166,0.7);
+    box-shadow: 0 0 20px rgba(255, 112, 166, 0.7);
+}
+
+form button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+#form-status {
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    min-height: 1.4em;
+}
+
+.form-success {
+    color: #4caf50;
+}
+
+.form-error {
+    color: #f44336;
+}
+
+body.light-mode .form-success {
+    color: #2e7d32;
+}
+
+body.light-mode .form-error {
+    color: #c62828;
 }
 
 .social-card h3 {
@@ -536,7 +665,7 @@ form button:hover {
 
 .social-buttons a:hover {
     transform: translateX(5px);
-    box-shadow: 0 0 20px rgba(255,112,166,0.5);
+    box-shadow: 0 0 20px rgba(255, 112, 166, 0.5);
 }
 
 .social-buttons a img {
@@ -544,7 +673,9 @@ form button:hover {
     height: 28px;
 }
 
-/* Footer */
+/* ===========================
+   Footer
+   =========================== */
 footer {
     text-align: center;
     padding: 20px 0;
@@ -552,8 +683,11 @@ footer {
     color: #bbb;
 }
 
-/* Setas fixas topo/fundo - z-index aumentado para garantir visibilidade */
-.seta-cima, .seta-baixo {
+/* ===========================
+   Navigation Arrows
+   =========================== */
+.seta-cima,
+.seta-baixo {
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
@@ -561,7 +695,7 @@ footer {
     color: #c38fff;
     cursor: pointer;
     transition: transform 0.3s, color 0.3s, opacity 0.3s;
-    z-index: 99999; /* MUITO alto para garantir que ficam acima dos cartões */
+    z-index: 99999;
     opacity: 0.9;
     pointer-events: auto;
 }
@@ -570,12 +704,12 @@ footer {
     top: 20px;
 }
 
-/* usa safe-area-inset para telemóveis com notch */
 .seta-baixo {
     bottom: calc(env(safe-area-inset-bottom, 20px) + 12px);
 }
 
-.seta-cima:hover, .seta-baixo:hover {
+.seta-cima:hover,
+.seta-baixo:hover {
     color: #ff70a6;
     opacity: 1;
     transform: translateX(-50%) scale(1.2);
@@ -586,62 +720,70 @@ body.header-view .seta-baixo {
     display: none;
 }
 
-/* Espaçamento entre título de seção e conteúdo */
-section h2 {
-    margin-bottom: 5px;
-    color: #c38fff;
-    font-size: 2rem;
-}
-
-/* Scroll suave */
+/* ===========================
+   Smooth Scroll
+   =========================== */
 html {
     scroll-behavior: smooth;
 }
 
-/* Responsividade */
+/* ===========================
+   Responsive – Tablet (≤900px)
+   =========================== */
 @media (max-width: 900px) {
     .header-hero {
         flex-direction: column;
         text-align: center;
         gap: 25px;
     }
+
     .contact-container {
         flex-direction: column;
         align-items: center;
     }
+
     .social-buttons {
         flex-direction: row;
         justify-content: flex-start;
         padding-top: 0;
         gap: 10px;
     }
-    
-    /* 2 colunas em tablets / ecrãs intermédios */
+
     .projeto {
         flex: 1 1 calc(50% - var(--gap-projects));
         max-width: 460px;
     }
 
-    /* reduzir o spacer em ecrãs pequenos */
-    :root { --arrow-safe-space: 120px; }
+    :root {
+        --arrow-safe-space: 120px;
+    }
 }
 
+/* ===========================
+   Responsive – Mobile (≤600px)
+   =========================== */
 @media (max-width: 600px) {
     header nav ul {
         flex-direction: column;
         gap: 10px;
     }
+
     .projeto {
         flex: 1 1 100%;
         max-width: 100%;
     }
-    .about-personal, .about-education, .about-skills {
+
+    .about-personal,
+    .about-education,
+    .about-skills {
         flex: 1 1 100%;
     }
+
     .contact-card {
         width: 90%;
     }
 
-    /* diminuir ainda mais o spacer em telemóveis */
-    :root { --arrow-safe-space: 100px; }
+    :root {
+        --arrow-safe-space: 100px;
+    }
 }
