@@ -3,11 +3,11 @@
 //  everything once the DOM is ready.
 // ============================================================
 
-import { renderProjects  } from './src/js/projects.js';
-import { initNavigation  } from './src/js/navigation.js';
-import { initAbout       } from './src/js/about.js';
-import { initTheme       } from './src/js/theme.js';
-import { initContactForm } from './src/js/contact.js';
+import { renderProjects  } from './projects.js';
+import { initNavigation  } from './navigation.js';
+import { initAbout       } from './about.js';
+import { initTheme       } from './theme.js';
+import { initContactForm } from './contact.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     renderProjects();
