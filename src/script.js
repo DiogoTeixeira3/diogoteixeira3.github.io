@@ -136,4 +136,25 @@ document.addEventListener('DOMContentLoaded', () => {
     themeToggle.textContent = document.body.classList.contains('light-mode') ? '🌙' : '🌞';
   });
 
+  // --- Contact Form: Send Message ---
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name    = document.getElementById('nome').value.trim();
+      const email   = document.getElementById('email').value.trim();
+      const message = document.getElementById('mensagem').value.trim();
+      if (!name || !email || !message) return;
+      const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
+      const body    = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+      window.location.href = `mailto:diteixeira04@gmail.com?subject=${subject}&body=${body}`;
+      this.reset();
+      const btn = this.querySelector('button[type="submit"]');
+      const original = btn.textContent;
+      btn.textContent = 'Email client opened ✓';
+      btn.disabled = true;
+      setTimeout(() => { btn.textContent = original; btn.disabled = false; }, 3000);
+    });
+  }
+
 });

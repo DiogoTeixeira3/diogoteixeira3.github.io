@@ -471,6 +471,8 @@ section h2 {
 .projeto-content {
     padding: 15px;
     flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .projeto h3 {
@@ -497,6 +499,7 @@ section h2 {
 .projeto-buttons {
     display: flex;
     justify-content: space-between;
+    margin-top: auto;
 }
 
 .projeto-buttons a {
@@ -542,7 +545,7 @@ section h2 {
     flex-wrap: wrap;
     gap: 40px;
     justify-content: center;
-    align-items: flex-start;
+    align-items: stretch;
     margin-top: 20px;
 }
 
