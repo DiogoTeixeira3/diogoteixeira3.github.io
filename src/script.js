@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     { nome: "Padel Manager Website", linguagens: ["Kotlin", "SQL", "HTML", "CSS", "JavaScript"], repo: "https://github.com/DiogoTeixeira3/Padel-Manager.git", pdf: "../files/Padel-Manager.pdf", img: "../files/padel.png" },
     { nome: "Chelas Poker Dice Website", linguagens: ["React", "Spring", "TypeScript", "Kotlin", "Vite", "CSS", "HTML"], repo: "https://github.com/DiogoTeixeira3/Chelas-Poker-Dice-Website.git", pdf: "../files/project-requirements.pdf", img: "../files/ChelasPokerDice.png" },
     { nome: "Chelas Poker Dice Android App", linguagens: ["Kotlin", "Ngrok", "Android Studio"], repo: "https://github.com/DiogoTeixeira3/Chelas-Poker-Dice-App.git", pdf: "../files/ChelasPokerDiceApp.pdf", img: "../files/ChelasPokerDice.png" },
-    { nome: "Projeto 5", linguagens: ["React", "Node.js"], repo: "https://github.com/DiogoTeixeira3/projeto5", pdf: "../files/projeto5.pdf", img: "../files/projeto5.png" },
+    { nome: "My Portfolio Website", linguagens: ["HTML", "CSS", "JavaScript"], repo: "https://github.com/DiogoTeixeira3/diogoteixeira3.github.io.git", pdf: "../files/Portfolio.pdf", img: "../files/image.png" },
     { nome: "Connect Four", linguagens: ["Kotlin"], repo: "https://github.com/DiogoTeixeira3/ConnectFour.git", pdf: "../files/ConnectedFour.pdf", img: "../files/ConnectFour.png" }
   ];
 
