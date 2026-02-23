@@ -45,11 +45,13 @@ export function initNavigation() {
     const arrowUp   = document.querySelector('.seta-cima');
     const arrowDown = document.querySelector('.seta-baixo');
 
-    // Smooth scroll for nav links
+    // Smooth scroll for nav links (skip external/file links)
     document.querySelectorAll('header nav ul li a').forEach(link => {
         link.addEventListener('click', e => {
+            const href = link.getAttribute('href');
+            if (!href || !href.startsWith('#')) return; // let the browser handle it normally
             e.preventDefault();
-            const target = document.querySelector(link.getAttribute('href'));
+            const target = document.querySelector(href);
             if (target) target.scrollIntoView({ behavior: 'smooth' });
             setTimeout(() => updateArrows(arrowUp, arrowDown), 450);
         });
