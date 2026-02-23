@@ -27,14 +27,6 @@ export function initContactForm() {
         status.textContent = '';
         status.className   = '';
 
-        if (FORMSPREE_ID === 'mvzbvqpb') {
-            status.textContent = '✗ Form not configured yet. Please set up Formspree.';
-            status.className   = 'form-error';
-            btn.textContent    = 'Send Message';
-            btn.disabled       = false;
-            return;
-        }
-
         try {
             const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
                 method: 'POST',
@@ -44,7 +36,7 @@ export function initContactForm() {
 
             if (res.ok) {
                 this.reset();
-                status.textContent = "✓ Message sent! I'll get back to you soon.";
+                status.textContent = "✓ Message sent!";
                 status.className   = 'form-success';
             } else {
                 const data = await res.json();
