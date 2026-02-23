@@ -47,12 +47,11 @@ export function initNavigation() {
 
     // Smooth scroll for nav links (skip external/file links)
     document.querySelectorAll('header nav ul li a').forEach(link => {
-        link.addEventListener('click', e => {
+        link.addEventListener('click', () => {
             const href = link.getAttribute('href');
             if (!href || !href.startsWith('#')) return; // let the browser handle it normally
-            e.preventDefault();
-            const target = document.querySelector(href);
-            if (target) target.scrollIntoView({ behavior: 'smooth' });
+            // Allow default browser behaviour: CSS smooth-scroll + URL hash update + history
+            // Delay matches typical CSS smooth-scroll duration so arrows reflect final position
             setTimeout(() => updateArrows(arrowUp, arrowDown), 450);
         });
     });
@@ -67,5 +66,7 @@ export function initNavigation() {
 
     // Update arrows on scroll
     window.addEventListener('scroll', () => updateArrows(arrowUp, arrowDown));
+    // Update arrows when browser navigates back/forward (short delay to let scroll position settle)
+    window.addEventListener('popstate', () => setTimeout(() => updateArrows(arrowUp, arrowDown), 100));
     updateArrows(arrowUp, arrowDown);
 }
