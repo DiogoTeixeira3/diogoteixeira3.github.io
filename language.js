@@ -44,14 +44,14 @@ const translations = {
 
         // Nav
         'nav-about': 'Sobre Mim',
-        'nav-projects': 'Meus Projetos',
-        'nav-contact': 'Contacte-me',
+        'nav-projects': ' Os Meus Projetos',
+        'nav-contact': 'Contacta-me',
         'nav-resume': 'O Meu CV',
 
         // About
         'about-title': 'Sobre Mim',
         'about-personal-title': 'Pessoal',
-        'about-personal-text': 'Sou uma pessoa jovem e motivada, com uma grande paixão por desporto e tecnologia. Como jogador de futebol desde a infância, aprendi o valor do trabalho em equipa, disciplina e resiliência — qualidades que levo para todos os aspetos da minha vida. Gosto de passar tempo com a família e amigos, conhecer novas pessoas e construir ligações fortes. Desde cedo, também sou fã de videojogos, o que despertou a minha curiosidade e amor pela tecnologia. Considero-me uma pessoa comunicativa, trabalhadora e adaptável, que prospera em ambientes colaborativos e está sempre disposta a aprender e crescer.',
+        'about-personal-text': 'Sou um jovem motivado e com uma grande paixão pelo desporto e pela tecnologia. Desde a minha infância que sou jogador de futebol, e com isso aprendi valores como o trabalho em equipa, disciplina, resiliência e muitos mais, qualidades que aplico em todos os momentos da minha vida. Adoro aproveitar o meu tempo livre para conviver com familia e amigos. Os videojogos entraram desde muito cedo na minha vida, foram eles que despertaram a minha curiosidade e paixão pelas tecnologias. Sou uma pessoa curiosa e comunicativa, gosto de conhecer pontos de vista diferentes dos meus, debater ideias e estou sempre disposto a aprender.',
         'about-education-title': 'Educação',
         'about-education-text': 'Comecei o meu percurso em Inglês nas British Isles, concluindo um curso abrangente de 2014 a 2019 e alcançando o nível B2. Depois prossegui o ensino secundário na EB 2/3 D. Martinho Vaz em Castelo Branco, no curso de Ciências e Tecnologias. Atualmente, encontro-me no último ano da Licenciatura em Engenharia Informática e de Computadores no ISEL, desenvolvendo as minhas competências em desenvolvimento de software, programação e engenharia de sistemas, preparando-me para contribuir eficazmente na indústria tecnológica.',
         'about-skills-title': 'Competências & Ferramentas',
@@ -59,13 +59,13 @@ const translations = {
         'btn-close': 'Fechar',
 
         // Contact
-        'contact-title': 'Contacte-me',
+        'contact-title': 'Contacta-me',
         'placeholder-name': 'Nome',
         'placeholder-email': 'Email',
         'placeholder-message': 'Mensagem',
         'btn-send': 'Enviar Mensagem',
         'btn-sending': 'A enviar…',
-        'social-title': 'Conecte-se comigo',
+        'social-title': 'Conecta-te comigo',
 
         // Footer
         'footer-text': '© 2025 Diogo Gouveia Teixeira',
