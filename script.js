@@ -8,6 +8,7 @@ import { initNavigation  } from './navigation.js';
 import { initAbout       } from './about.js';
 import { initTheme       } from './theme.js';
 import { initContactForm } from './contact.js';
+import { initLanguage    } from './language.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     renderProjects();
@@ -15,4 +16,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initAbout();
     initTheme();
     initContactForm();
+    initLanguage();
 });
