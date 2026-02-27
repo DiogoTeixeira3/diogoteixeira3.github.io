@@ -24,7 +24,7 @@ body {
 }
 
 /* ===========================
-   Light Mode Overrides
+   Light Mode 
    =========================== */
 
 /* Body */
@@ -34,7 +34,7 @@ body.light-mode {
     color: #111;
 }
 
-/* Header – purple gradient instead of plain white */
+
 body.light-mode header {
     background: linear-gradient(145deg, #7b1fa2, #ce93d8);
 }
@@ -84,10 +84,21 @@ body.light-mode .ver-mais {
 }
 
 /* Skill & language badges */
-body.light-mode .skill,
+body.light-mode .skill {
+    background: rgba(123, 47, 190, 0.12);
+}
+
 body.light-mode .linguagem {
     background: #7b2fbe;
     color: #fff;
+}
+
+body.light-mode .skill:hover {
+    box-shadow: 0 8px 20px rgba(123, 47, 190, 0.5);
+}
+
+body.light-mode .skill[data-tooltip]::after {
+    background: rgba(60, 0, 100, 0.9);
 }
 
 /* Form inputs */
@@ -415,7 +426,7 @@ section h2 {
     flex: 1 1 100%;
     text-align: center;
     margin-top: 20px;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .about-skills h3 {
@@ -427,19 +438,73 @@ section h2 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 15px;
+    gap: 18px;
+    padding-bottom: 35px;
 }
 
 .skill {
-    background: #5a189a;
-    color: #fff;
-    padding: 6px 12px;
-    border-radius: 8px;
-    font-weight: bold;
-    font-size: 0.9rem;
+    position: relative;
+    background: rgba(255, 255, 255, 0.08);
+    width: 60px;
+    height: 60px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
     opacity: 0;
     transform: translateY(20px);
     animation: fadeInUp 0.5s forwards;
+    cursor: default;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+}
+
+.skill i {
+    font-size: 2rem;
+}
+
+.skill img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+/* GitHub icon is black by default — invert for dark mode */
+.skill .devicon-github-original {
+    filter: invert(1);
+}
+body.light-mode .skill .devicon-github-original {
+    filter: none;
+}
+
+.skill:hover {
+    transform: translateY(-6px) scale(1.1);
+    box-shadow: 0 8px 20px rgba(138, 43, 226, 0.4);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Tooltip */
+.skill[data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.85);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 6px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s;
+}
+
+.skill:hover[data-tooltip]::after {
+    opacity: 1;
 }
 
 @keyframes fadeInUp {
