@@ -1,13 +1,10 @@
 // ============================================================
-//  Contact – Formspree form submission
-//
-//  To activate: sign up free at https://formspree.io, create a
-//  form and replace YOUR_FORM_ID with the ID from your dashboard.
+//  contact.js – Formspree form submission
 // ============================================================
 
 const FORMSPREE_ID = 'mvzbvqpb';
 
-export function initContactForm() {
+export function initContact() {
     const form   = document.getElementById('contactForm');
     const status = document.getElementById('form-status');
     if (!form || !status) return;
@@ -15,43 +12,37 @@ export function initContactForm() {
     form.addEventListener('submit', async function (e) {
         e.preventDefault();
 
-        const btn     = this.querySelector('button[type="submit"]');
-        const name    = document.getElementById('nome').value.trim();
-        const email   = document.getElementById('email').value.trim();
-        const message = document.getElementById('mensagem').value.trim();
-
-        if (!name || !email || !message) return;
-
-        btn.textContent = 'Sending…';
+        const btn = this.querySelector('button[type="submit"]');
         btn.disabled    = true;
+        btn.querySelector('span').textContent = 'Sending…';
         status.textContent = '';
         status.className   = '';
 
         try {
             const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
-                method: 'POST',
+                method:  'POST',
                 headers: { Accept: 'application/json' },
-                body: new FormData(this),
+                body:    new FormData(this),
             });
 
             if (res.ok) {
                 this.reset();
-                status.textContent = "✓ Message sent!";
-                status.className   = 'form-success';
+                status.textContent = '✓ Message sent!';
+                status.className   = 'fs-ok';
             } else {
                 const data = await res.json();
                 const err  = data.errors
                     ? data.errors.map(x => x.message).join(', ')
                     : 'Something went wrong.';
                 status.textContent = `✗ ${err}`;
-                status.className   = 'form-error';
+                status.className   = 'fs-err';
             }
         } catch {
             status.textContent = '✗ Network error – please try again.';
-            status.className   = 'form-error';
+            status.className   = 'fs-err';
         } finally {
-            btn.textContent = 'Send Message';
-            btn.disabled    = false;
+            btn.disabled = false;
+            btn.querySelector('span').textContent = 'Send Message';
         }
     });
 }

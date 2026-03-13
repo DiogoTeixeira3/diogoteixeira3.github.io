@@ -1,20 +1,23 @@
 // ============================================================
-//  Entry point – imports each feature module and initialises
-//  everything once the DOM is ready.
+//  script.js – entry point, imports all modules
 // ============================================================
 
-import { renderProjects  } from './projects.js';
-import { initNavigation  } from './navigation.js';
-import { initAbout       } from './about.js';
-import { initTheme       } from './theme.js';
-import { initContactForm } from './contact.js';
-import { initLanguage    } from './language.js';
+import { initLoader    } from './loader.js';
+import { initTheme     } from './theme.js';
+import { initLanguage  } from './language.js';
+import { initAbout     } from './about.js';
+import { renderProjects} from './projects.js';
+import { initReveal    } from './reveal.js';
+import { initNavigation} from './navigation.js';
+import { initContact   } from './contact.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-    renderProjects();
-    initNavigation();
-    initAbout();
+    initLoader();
     initTheme();
-    initContactForm();
     initLanguage();
+    initAbout();
+    renderProjects();
+    initReveal();
+    initNavigation();
+    initContact();
 });

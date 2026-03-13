@@ -1,5 +1,5 @@
 // ============================================================
-//  Projects – data array + DOM rendering
+//  projects.js – data + card rendering
 // ============================================================
 
 const projetos = [
@@ -7,76 +7,78 @@ const projetos = [
         nome: 'Checkers',
         linguagens: ['Kotlin', 'Compose'],
         repo: 'https://github.com/DiogoTeixeira3/Checkers',
-        pdf: 'files/Checkers.pdf',
-        img: 'files/checkers.png',
+        pdf:  'files/Checkers.pdf',
+        img:  'files/checkers.png',
     },
     {
         nome: 'Padel Manager Website',
         linguagens: ['Kotlin', 'SQL', 'HTML', 'CSS', 'JavaScript'],
         repo: 'https://github.com/DiogoTeixeira3/Padel-Manager.git',
-        pdf: 'files/Padel-Manager.pdf',
-        img: 'files/padel.png',
+        pdf:  'files/Padel-Manager.pdf',
+        img:  'files/padel.png',
     },
     {
         nome: 'Chelas Poker Dice Website',
-        linguagens: ['React', 'Spring', 'TypeScript', 'Kotlin', 'Vite', 'CSS'],
+        linguagens: ['React', 'Spring', 'TypeScript', 'Kotlin', 'Vite'],
         repo: 'https://github.com/DiogoTeixeira3/Chelas-Poker-Dice-Website.git',
-        pdf: 'files/project-requirements.pdf',
-        img: 'files/ChelasPokerDice.png',
+        pdf:  'files/project-requirements.pdf',
+        img:  'files/ChelasPokerDice.png',
     },
     {
-        nome: 'Chelas Poker Dice Android App',
-        linguagens: ['Kotlin', 'Ngrok', 'Android Studio'],
+        nome: 'Chelas Poker Dice App',
+        linguagens: ['Kotlin', 'Android Studio', 'Ngrok'],
         repo: 'https://github.com/DiogoTeixeira3/Chelas-Poker-Dice-App.git',
-        pdf: 'files/ChelasPokerDiceApp.pdf',
-        img: 'files/ChelasPokerDice.png',
+        pdf:  'files/ChelasPokerDiceApp.pdf',
+        img:  'files/ChelasPokerDice.png',
     },
     {
         nome: 'My Portfolio',
         linguagens: ['HTML', 'CSS', 'JavaScript'],
         repo: 'https://github.com/DiogoTeixeira3/diogoteixeira3.github.io',
-        img: 'files/image.png',
+        img:  'files/image.png',
     },
     {
         nome: 'Connect Four',
         linguagens: ['Kotlin'],
         repo: 'https://github.com/DiogoTeixeira3/ConnectFour.git',
-        pdf: 'files/ConnectedFour.pdf',
-        img: 'files/ConnectFour.png',
+        pdf:  'files/ConnectedFour.pdf',
+        img:  'files/ConnectFour.png',
     },
 ];
 
 export function renderProjects() {
-    const container = document.getElementById('projetos-container');
+    const container = document.getElementById('projects-list');
     if (!container) return;
 
     container.innerHTML = '';
-    container.setAttribute('role', 'list');
 
-    projetos.forEach(p => {
-        const div = document.createElement('div');
-        div.classList.add('projeto');
-        div.setAttribute('role', 'listitem');
+    projetos.forEach((p, i) => {
+        const card = document.createElement('article');
+        card.className = 'proj-card reveal';
+        card.style.transitionDelay = `${(i % 3) * 0.08}s`;
 
-        const fallbackImg = `https://via.placeholder.com/280x150.png?text=${encodeURIComponent(p.nome)}`;
         const badges = p.linguagens
-            .map(l => `<span class="linguagem">${l}</span>`)
+            .map(l => `<span class="proj-tag">${l}</span>`)
             .join('');
 
-        div.innerHTML = `
-            <img src="${p.img || fallbackImg}" alt="${p.nome}">
-            <div class="projeto-content">
-                <h3>${p.nome}</h3>
-                <div class="linguagens">${badges}</div>
-                <div class="projeto-buttons">
-                    <a href="${p.repo}" target="_blank">GitHub</a>
-                    ${p.pdf ? `<a href="${p.pdf}" target="_blank" class="pdf">PDF</a>` : ''}
-                </div>
+        const links = `
+            <a href="${p.repo}" target="_blank" rel="noopener" class="proj-btn">GitHub ↗</a>
+            ${p.pdf ? `<a href="${p.pdf}" target="_blank" rel="noopener" class="proj-btn proj-btn-pdf">PDF ↗</a>` : ''}
+        `;
+
+        card.innerHTML = `
+            <div class="proj-img-wrap">
+                <img src="${p.img}" alt="${p.nome}" loading="lazy"
+                     onerror="this.parentElement.classList.add('no-img'); this.remove()">
+                <div class="proj-img-overlay"></div>
+            </div>
+            <div class="proj-body">
+                <h3 class="proj-name">${p.nome}</h3>
+                <div class="proj-tags">${badges}</div>
+                <div class="proj-links">${links}</div>
             </div>
         `;
 
-        container.appendChild(div);
+        container.appendChild(card);
     });
-
-    container.setAttribute('aria-busy', 'false');
 }

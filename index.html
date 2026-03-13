@@ -1,133 +1,171 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio de Diogo Gouveia Teixeira</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diogo Teixeira — Software Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,700;0,900;1,400&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <div class="header-hero">
-            <h1 data-i18n="header-title">Hi everyone, I'm Diogo Teixeira!</h1>
-            <p class="header-mini" data-i18n="header-mini">Future software engineer from Lisbon, Portugal. Currently in the last year of Software Engineering in ISEL, passionate about front-end and back-end development.</p>
+
+  <!-- ══ LOADER ══ -->
+  <div id="loader">
+    <div class="loader-inner">
+      <div class="loader-line"><span data-word="0">Diogo</span></div>
+      <div class="loader-line"><span data-word="1">Teixeira</span></div>
+      <p class="loader-sub" data-word="2">Software Engineer</p>
+    </div>
+    <div class="loader-bar"><div class="loader-fill"></div></div>
+  </div>
+
+  <!-- ══ TOP NAV ══ -->
+  <header id="topnav">
+    <a href="#hero" class="nav-logo">
+    <span class="logo-first">Diogo</span>
+    <span class="logo-last">Gouveia</span>
+    <span class="logo-first">Teixeira</span>
+    </a>
+
+    <nav class="nav-links">
+      <a href="#about"    class="nav-link" data-i18n="nav-about">About Me</a>
+      <a href="#projects" class="nav-link" data-i18n="nav-projects">My Projects</a>
+      <a href="#contact"  class="nav-link" data-i18n="nav-contact">Contact Me</a>
+      <a href="files/CV.pdf" target="_blank" rel="noopener" class="nav-link nav-link-resume" data-i18n="nav-resume">My Resume ↗</a>
+    </nav>
+
+    <div class="nav-controls">
+      <button id="lang-btn" class="ctrl-btn" aria-label="Switch language">
+        <img src="https://flagcdn.com/w40/pt.png" id="flag-img" alt="PT" width="22" height="14">
+      </button>
+      <button id="theme-btn" class="ctrl-btn" aria-label="Toggle theme">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M13.5 10A6 6 0 0 1 6 2.5a6 6 0 1 0 7.5 7.5z"
+                stroke="currentColor" stroke-width="1.4"
+                stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- ══ HERO ══ -->
+  <section id="hero">
+    <div class="hero-text">
+      <p class="hero-eyebrow" data-i18n="eyebrow">Based in Lisbon, Portugal · ISEL · Software Engineering</p>
+      <h1 class="hero-headline">
+        <span class="h-line" data-i18n="h1">Hi everyone!</span>
+        <span class="h-line" data-i18n="h2">I'm</span>
+        <em class="h-line italic-line" data-i18n="h3">Diogo Teixeira.</em>
+      </h1>
+      <p class="hero-desc" data-i18n="desc">Future software engineer from Lisbon, Portugal. Currently in the last year of my BSc in Computer Science and Engineering, passionate about front-end and back-end development.</p>
+    </div>
+    <div class="hero-photo-col">
+      <div class="hero-photo-frame">
+        <div class="hero-photo-placeholder"><img src="../files/eu.png"></div>
+      </div>
+      <div class="hero-photo-caption" data-i18n="photo-caption">Available for opportunities</div>
+    </div>
+  </section>
+
+  <!-- ══ ABOUT ══ -->
+  <section id="about" class="page-section">
+    <div class="section-wrap">
+      <div class="section-header reveal">
+        <span class="section-num">01</span>
+        <h2 class="section-title" data-i18n="nav-about">About Me</h2>
+      </div>
+      <div class="about-cols reveal">
+        <div class="about-col">
+          <h3 class="col-heading" data-i18n="about-p-title">Personal</h3>
+          <p class="col-body" data-i18n="about-p-text">I am a young and motivated person with a very strong passion for sports and technology. As a football player since childhood, I have learned the value of teamwork, discipline, and resilience, qualities that I carry into every aspect of my life. I enjoy spending time with family and friends, meeting new people, and building strong connections. From an early age, I have also been a video game fan, which sparked my curiosity and love for technology. I consider myself a communicative, hardworking, and adaptable person who thrives in collaborative environments and is always eager to learn and grow.</p>
         </div>
+        <div class="about-col">
+          <h3 class="col-heading" data-i18n="about-e-title">Education</h3>
+          <p class="col-body" data-i18n="about-e-text">I started my journey in English at the British Isles, completing a comprehensive course from 2014 to 2019 and achieving a B2 level. Then I pursued my secondary education at EB 2/3 D. Martinho Vaz in Castelo Branco, following the Science and Technology course. Currently, I am in the final year of my Bachelor's degree in Computer and Informatics Engineering at ISEL, developing my skills in software development, programming, and systems engineering, preparing to contribute effectively in the tech industry.</p>
+          <div class="edu-badges">
+            <span class="badge">ISEL</span>
+            <span class="badge">B2 English</span>
+          </div>
+        </div>
+      </div>
+      <div class="skills-block reveal">
+        <h3 class="col-heading" data-i18n="about-s-title">Skills &amp; Tools</h3>
+        <div class="skills-row">
+          <span class="skill-chip" data-tip="HTML"><i class="devicon-html5-plain colored"></i></span>
+          <span class="skill-chip" data-tip="CSS"><i class="devicon-css3-plain colored"></i></span>
+          <span class="skill-chip" data-tip="JavaScript"><i class="devicon-javascript-plain colored"></i></span>
+          <span class="skill-chip" data-tip="TypeScript"><i class="devicon-typescript-plain colored"></i></span>
+          <span class="skill-chip" data-tip="Spring"><i class="devicon-spring-original colored"></i></span>
+          <span class="skill-chip" data-tip="Kotlin"><i class="devicon-kotlin-plain colored"></i></span>
+          <span class="skill-chip" data-tip="PostgreSQL"><i class="devicon-postgresql-plain colored"></i></span>
+          <span class="skill-chip" data-tip="SQL"><i class="devicon-azuresqldatabase-plain colored"></i></span>
+          <span class="skill-chip" data-tip="GitHub"><i class="devicon-github-original colored"></i></span>
+          <span class="skill-chip" data-tip="IntelliJ"><i class="devicon-intellij-plain colored"></i></span>
+          <span class="skill-chip" data-tip="Android Studio"><i class="devicon-androidstudio-plain colored"></i></span>
+          <span class="skill-chip" data-tip="React"><i class="devicon-react-original colored"></i></span>
+          <span class="skill-chip" data-tip="Node.js"><i class="devicon-nodejs-plain colored"></i></span>
+          <span class="skill-chip" data-tip="VS Code"><i class="devicon-vscode-plain colored"></i></span>
+          <span class="skill-chip" data-tip="Docker"><i class="devicon-docker-plain colored"></i></span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- Botão Dark/Light Mode -->
-        <button id="theme-toggle" class="theme-toggle" title="Toggle dark/light mode">🌞</button>
-        <!-- Botão Tradução EN/PT -->
-        <button id="lang-toggle" class="lang-toggle" title="Mudar para Português">
-            <img src="https://flagcdn.com/w40/pt.png" alt="PT" width="24" height="16" style="border-radius:2px">
-        </button>
+  <!-- ══ PROJECTS ══ -->
+  <section id="projects" class="page-section">
+    <div class="section-wrap">
+      <div class="section-header reveal">
+        <span class="section-num">02</span>
+        <h2 class="section-title" data-i18n="nav-projects">My Projects</h2>
+      </div>
+      <div id="projects-list" class="projects-grid"></div>
+    </div>
+  </section>
 
-        <nav>
-            <ul>
-                <li><a href="#About" data-i18n="nav-about">About Me</a></li>
-                <li><a href="#Projects" data-i18n="nav-projects">My Projects</a></li>
-                <li><a href="#Contact" data-i18n="nav-contact">Contact Me</a></li>
-                <li><a href="files/CV.pdf" target="_blank" data-i18n="nav-resume">My Resume</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        <!-- About Me -->
-        <section id="About">
-            <h2 data-i18n="about-title">About Me</h2>
-            <div class="about-container">
-                <div class="about-personal">
-                    <h3 data-i18n="about-personal-title">Personal</h3>
-                    <p data-i18n="about-personal-text">I am a young and motivated person with a very strong passion for sports and technology. As a football player since childhood, I have learned the value of teamwork, discipline, and resilience, qualities that I carry into every aspect of my life. I enjoy spending time with family and friends, meeting new people, and building strong connections. From an early age, I have also been a video game fan, which sparked my curiosity and love for technology. I consider myself a communicative, hardworking, and adaptable person who thrives in collaborative environments and is always eager to learn and grow.</p>
-                    <button class="ver-mais" data-i18n="btn-more">More</button>
-                </div>
-                <div class="about-education">
-                    <h3 data-i18n="about-education-title">Education</h3>
-                    <p data-i18n="about-education-text">I started my journey in English at the British Isles, completing a comprehensive course from 2014 to 2019 and achieving a B2 level. Then I pursued my secondary education at EB 2/3 D. Martinho Vaz in Castelo Branco, following the Science and Technology course. Currently, I am in the final year of my Bachelor's degree in Computer and Informatics Engineering at ISEL, developing my skills in software development, programming, and systems engineering, preparing to contribute effectively in the tech industry.</p>
-                    <button class="ver-mais" data-i18n="btn-more">More</button>
-                </div>
-                <!-- Skills Box -->
-                <div class="about-skills">
-                    <h3 data-i18n="about-skills-title">Skills & Tools</h3>
-                    <div class="skills-icons">
-                        <span class="skill" data-tooltip="HTML"><i class="devicon-html5-plain colored"></i></span>
-                        <span class="skill" data-tooltip="CSS"><i class="devicon-css3-plain colored"></i></span>
-                        <span class="skill" data-tooltip="JavaScript"><i class="devicon-javascript-plain colored"></i></span>
-                        <span class="skill" data-tooltip="TypeScript"><i class="devicon-typescript-plain colored"></i></span>
-                        <span class="skill" data-tooltip="Spring"><i class="devicon-spring-original colored"></i></span>
-                        <span class="skill" data-tooltip="Kotlin"><i class="devicon-kotlin-plain colored"></i></span>
-                        <span class="skill" data-tooltip="PostgreSQL"><i class="devicon-postgresql-plain colored"></i></span>
-                        <span class="skill" data-tooltip="SQL"><i class="devicon-azuresqldatabase-plain colored"></i></span>
-                        <span class="skill" data-tooltip="GitHub"><i class="devicon-github-original colored"></i></span>
-                        <span class="skill" data-tooltip="IntelliJ"><i class="devicon-intellij-plain colored"></i></span>
-                        <span class="skill" data-tooltip="Android Studio"><i class="devicon-androidstudio-plain colored"></i></span>
-                        <span class="skill" data-tooltip="React"><i class="devicon-react-original colored"></i></span>
-                        <span class="skill" data-tooltip="Node.js"><i class="devicon-nodejs-plain colored"></i></span>
-                        <span class="skill" data-tooltip="VS Code"><i class="devicon-vscode-plain colored"></i></span>
-                        <span class="skill" data-tooltip="Docker"><i class="devicon-docker-plain colored"></i></span>
-                    </div>
-                </div>
+  <!-- ══ CONTACT ══ -->
+  <section id="contact" class="page-section">
+    <div class="section-wrap">
+      <div class="section-header reveal">
+        <span class="section-num">03</span>
+        <h2 class="section-title" data-i18n="nav-contact">Contact Me</h2>
+      </div>
+      <div class="contact-wrap reveal">
+        <div class="contact-left">
+          <form id="contactForm">
+            <div class="form-row">
+              <input type="text"  name="name"    placeholder="Name"    data-ph="ph-name"  required>
+              <input type="email" name="email"   placeholder="Email"   data-ph="ph-email" required>
             </div>
-        </section>
+            <textarea name="message" placeholder="Message" data-ph="ph-msg" required></textarea>
+            <div id="form-status"></div>
+            <button type="submit" class="form-send">
+              <span data-i18n="btn-send">Send Message</span>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H3M13 3V13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </form>
+        </div>
+        <div class="contact-right">
+          <p class="contact-tagline" data-i18n="contact-tag">Let's build something together.</p>
+          <ul class="social-list">
+            <li><a href="https://www.linkedin.com/in/DiogoGteixeira/" target="_blank" rel="noopener">LinkedIn <span>↗</span></a></li>
+            <li><a href="https://github.com/DiogoTeixeira3" target="_blank" rel="noopener">GitHub <span>↗</span></a></li>
+            <li><a href="https://www.instagram.com/teixeira10._/" target="_blank" rel="noopener">Instagram <span>↗</span></a></li>
+            <li><a href="https://x.com/teixeira10_" target="_blank" rel="noopener">Twitter / X <span>↗</span></a></li>
+            <li><a href="mailto:diteixeira04@gmail.com">diteixeira04@gmail.com <span>↗</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- Projects -->
-        <section id="Projects">
-            <h2></h2>
-            <div id="projetos-container" aria-live="polite" aria-busy="true"></div>
-        </section>
+  <footer id="footer">
+    <span data-i18n="footer">© 2026 Diogo Gouveia Teixeira</span>
+    <span class="footer-right">Software Engineer · Lisbon</span>
+  </footer>
 
-        <!-- Contact Me -->
-        <section id="Contact">
-            <h2 data-i18n="contact-title">Contact Me</h2>
-            <div class="contact-container">
-                <div class="contact-card">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <input type="text" id="nome" name="name" placeholder="Name" data-i18n-placeholder="placeholder-name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="email" name="email" placeholder="Email" data-i18n-placeholder="placeholder-email" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea id="mensagem" name="message" placeholder="Message" data-i18n-placeholder="placeholder-message" required></textarea>
-                        </div>
-                        <div id="form-status"></div>
-                        <button type="submit" data-i18n="btn-send">Send Message</button>
-                    </form>
-                </div>
-
-                <div class="contact-card social-card">
-                    <h3 data-i18n="social-title">Connect with me</h3>
-                    <div class="social-buttons">
-                        <a href="https://www.linkedin.com/in/DiogoGteixeira/" target="_blank">
-                            <img src="files/linkedin.svg" alt="LinkedIn"> LinkedIn
-                        </a>
-                        <a href="https://github.com/DiogoTeixeira3" target="_blank">
-                            <img src="files/github.svg" alt="GitHub"> GitHub
-                        </a>
-                        <a href="https://www.instagram.com/teixeira10._/" target="_blank">
-                            <img src="files/instagram.svg" alt="Instagram"> Instagram
-                        </a>
-                        <a href="https://x.com/teixeira10_" target="_blank">
-                            <img src="files/twitter.svg" alt="Twitter"> Twitter
-                        </a>
-                        <a href="mailto:diteixeira04@gmail.com">
-                            <img src="files/gmail.svg" alt="Email"> diteixeira04@gmail.com
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <p data-i18n="footer-text">&copy; 2025 Diogo Gouveia Teixeira</p>
-    </footer>
-
-    <!-- Setas fixas topo/fundo -->
-    <span class="seta-cima" data-target="header">&#x25B2;</span>
-    <span class="seta-baixo" data-target="#About">&#x25BC;</span>
-
-    <script src="script.js" type="module"></script>
+  <script src="script.js" type="module"></script>
 </body>
 </html>
