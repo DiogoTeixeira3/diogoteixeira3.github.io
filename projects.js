@@ -62,8 +62,8 @@ export function renderProjects() {
             .join('');
 
         const links = `
-            <a href="${p.repo}" target="_blank" rel="noopener" class="proj-btn">GitHub ↗</a>
-            ${p.pdf ? `<a href="${p.pdf}" target="_blank" rel="noopener" class="proj-btn proj-btn-pdf">PDF ↗</a>` : ''}
+            <a href="${p.repo}" target="_blank" rel="noopener" class="proj-btn">GitHub</a>
+            ${p.pdf ? `<a href="${p.pdf}" target="_blank" rel="noopener" class="proj-btn proj-btn-pdf">PDF</a>` : ''}
         `;
 
         card.innerHTML = `

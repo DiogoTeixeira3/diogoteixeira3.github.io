@@ -5,9 +5,9 @@
 const T = {
     en: {
         eyebrow:        'Based in Lisbon, Portugal · ISEL · Software Engineering',
-        h1:             'Future',
-        h2:             'Software',
-        h3:             'Engineer.',
+        h1:             'Hi everyone!',
+        h2:             'I\'m',
+        h3:             'Diogo Teixeira.',
         desc:           'Future software engineer from Lisbon, Portugal. Currently in the last year of Software Engineering in ISEL, passionate about front-end and back-end development.',
         'photo-caption':'Available for opportunities',
         'nav-about':    'About Me',

@@ -334,7 +334,9 @@ body.ready #footer         { transition-delay: .24s; }
 
 .hero-photo-frame {
   width: 100%;
+  max-width: 400px;
   /* portrait ratio 3:4 */
+  border-radius: 20px;
   aspect-ratio: 3/4;
   border: 1px solid var(--border);
   overflow: hidden;
