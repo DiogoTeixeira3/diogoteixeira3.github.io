@@ -10,7 +10,10 @@ export function initReveal() {
                 io.unobserve(e.target);
             }
         }),
-        { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+        // rootMargin positive bottom value: activate elements even when
+        // they are up to 120px below the visible viewport edge.
+        // This fixes skills-block not appearing on first load in smaller screens.
+        { threshold: 0, rootMargin: '0px 0px 120px 0px' }
     );
 
     // Observe all static .reveal elements
