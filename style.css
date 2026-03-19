@@ -135,18 +135,17 @@ body {
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    PAGE — hidden until loader done
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-#topnav, #hero, .page-section, #footer {
+/* #hero is excluded — its children animate individually */
+#topnav, .page-section, #footer {
   opacity: 0;
   transform: translateY(14px);
   transition: opacity .7s var(--ease), transform .7s var(--ease);
 }
 body.ready #topnav,
-body.ready #hero,
 body.ready .page-section,
 body.ready #footer { opacity: 1; transform: none; }
 
-body.ready #topnav       { transition-delay: .0s; }
-body.ready #hero         { transition-delay: .08s; }
+body.ready #topnav       { transition-delay: .0s; animation: navDrop .55s var(--ease) both; }
 body.ready .page-section { transition-delay: .16s; }
 body.ready #footer       { transition-delay: .24s; }
 
@@ -249,9 +248,10 @@ body.ready #footer       { transition-delay: .24s; }
   display: flex;
   flex-direction: column;
   gap: clamp(14px, 2.5vw, 28px);
-  min-width: 0; /* allows text to shrink */
+  min-width: 0;
 }
 
+/* Eyebrow — slides in from left */
 .hero-eyebrow {
   font-size: clamp(.65rem, .9vw, .85rem);
   font-weight: 500;
@@ -259,30 +259,56 @@ body.ready #footer       { transition-delay: .24s; }
   text-transform: uppercase;
   color: var(--txt-sub);
   opacity: 0;
-  animation: fadeUp .7s .1s var(--ease) forwards;
+  transform: translateX(-28px);
+  animation: heroEyebrow .8s .15s var(--ease) forwards;
+  animation-play-state: paused;
 }
 
+/* Headline wrapper clips each line for mask-reveal effect */
 .hero-headline {
   font-family: var(--font-sans);
   font-weight: 900;
-  /* KEY FIX: reduced max from 11.5rem → 8rem, vw from 11vw → 8.5vw */
   font-size: clamp(3rem, 8.5vw, 8rem);
   line-height: .92;
   letter-spacing: -.03em;
   color: var(--txt);
 }
 
-.h-line { display: block; }
+/* Each line is wrapped in a clip container */
+.h-line-wrap {
+  display: block;
+  overflow: hidden;
+  padding-bottom: .08em; /* prevents descender clipping */
+}
+
+.h-line {
+  display: block;
+  opacity: 0;
+  transform: translateY(105%);
+}
+
+.h-line-wrap:nth-child(1) .h-line {
+  animation: heroLine .75s .3s var(--ease) forwards;
+  animation-play-state: paused;
+}
+.h-line-wrap:nth-child(2) .h-line {
+  animation: heroLine .75s .44s var(--ease) forwards;
+  animation-play-state: paused;
+}
+.h-line-wrap:nth-child(3) .h-line {
+  animation: heroLine .75s .58s var(--ease) forwards;
+  animation-play-state: paused;
+}
 
 .italic-line {
   font-family: var(--font-serif);
   font-style: italic;
   font-weight: 700;
   color: var(--accent-light);
-  /* slightly smaller than the bold lines */
   font-size: clamp(2.8rem, 8vw, 7.6rem);
 }
 
+/* Description — fades up after headline */
 .hero-desc {
   font-size: clamp(.82rem, 1.2vw, 1rem);
   font-weight: 400;
@@ -290,17 +316,20 @@ body.ready #footer       { transition-delay: .24s; }
   max-width: 440px;
   line-height: 1.75;
   opacity: 0;
-  animation: fadeUp .7s .5s var(--ease) forwards;
+  animation: fadeUp .7s .85s var(--ease) forwards;
+  animation-play-state: paused;
 }
 
-/* Photo col */
+/* Photo col — slides in from right with scale */
 .hero-photo-col {
   display: flex;
   flex-direction: column;
   gap: 10px;
   align-items: flex-end;
   opacity: 0;
-  animation: fadeUp .7s .4s var(--ease) forwards;
+  transform: translateX(40px) scale(.97);
+  animation: heroPhoto .9s .4s var(--ease) forwards;
+  animation-play-state: paused;
 }
 
 .hero-photo-frame {
@@ -348,6 +377,20 @@ body.ready #footer       { transition-delay: .24s; }
   text-transform: uppercase;
   color: var(--txt-sub);
   text-align: right;
+  opacity: 0;
+  animation: fadeUp .6s 1s var(--ease) forwards;
+  animation-play-state: paused;
+}
+
+/* ── Unpause all hero animations once loader is done ── */
+body.ready .hero-eyebrow,
+body.ready .h-line-wrap:nth-child(1) .h-line,
+body.ready .h-line-wrap:nth-child(2) .h-line,
+body.ready .h-line-wrap:nth-child(3) .h-line,
+body.ready .hero-desc,
+body.ready .hero-photo-col,
+body.ready .hero-photo-caption {
+  animation-play-state: running;
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -740,6 +783,30 @@ form textarea { min-height: 110px; resize: vertical; }
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Headline lines rise out of clip container */
+@keyframes heroLine {
+  from { opacity: 0; transform: translateY(105%); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Eyebrow slides in from left */
+@keyframes heroEyebrow {
+  from { opacity: 0; transform: translateX(-28px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Photo slides in from right with subtle scale */
+@keyframes heroPhoto {
+  from { opacity: 0; transform: translateX(40px) scale(.97); }
+  to   { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+/* Navbar drops in from top */
+@keyframes navDrop {
+  from { opacity: 0; transform: translateY(-100%); }
   to   { opacity: 1; transform: translateY(0); }
 }
 

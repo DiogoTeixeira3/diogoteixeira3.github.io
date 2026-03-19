@@ -37,7 +37,7 @@ const T = {
         'nav-projects': 'Os Meus Projetos',
         'nav-contact':  'Contacta-me',
         'nav-resume':   'O Meu CV',
-        'about-p-title':'Pessoal', 
+        'about-p-title':'Pessoal',
         'about-p-text': 'Sou um jovem de 21 anos motivado, com duas grandes paixões: tecnologia e desporto. Jogo futebol desde os cinco anos e sou federado há mais de dez, experiência que me fez perceber a importância do trabalho em equipa, da disciplina e da resiliência, não só no contexto desportivo, mas em tudo o que faço na minha vida. Os videojogos também fizeram parte da minha vida desde cedo e foram eles que despertaram a minha curiosidade e o meu interesse pela tecnologia. Atualmente consigo conciliar tudo aquilo de que mais gosto e tenho como objetivo entrar no mercado de trabalho para continuar a desenvolver as minhas competências técnicas, mantendo sempre a ligação ao futebol e ao desporto, e assim conseguir o melhor dos dois mundos.',
         'about-e-title':'Educação',
         'about-e-text': 'Iniciei o percurso em inglês nas British Isles onde concluí o nível B2. Realizei o meu secundário na escola EB 2/3 D. Martinho Vaz de Castelo Branco, no curso de Ciências e Tecnologias. Atualmente estou a terminar a Licenciatura em Engenharia Informática e de Computadores no ISEL, onde desenvolvi competências em desenvolvimento de software e hardware. Estou pronto para contribuir e colocar em prática os meus conhecimentos no mercado de trabalho.',
