@@ -10,6 +10,7 @@ import { renderProjects} from './projects.js';
 import { initReveal    } from './reveal.js';
 import { initNavigation} from './navigation.js';
 import { initContact   } from './contact.js';
+import { initMenu      } from './menu.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     initLoader();
@@ -20,4 +21,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initReveal();
     initNavigation();
     initContact();
+    initMenu();
 });

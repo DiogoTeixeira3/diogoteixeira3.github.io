@@ -25,9 +25,9 @@
   <!-- ══ TOP NAV ══ -->
   <header id="topnav">
     <a href="#hero" class="nav-logo">
-    <span class="logo-first">Diogo</span>
-    <span class="logo-last">Gouveia</span>
-    <span class="logo-first">Teixeira</span>
+      <span class="logo-first">Diogo</span>
+      <span class="logo-last">Gouveia</span>
+      <span class="logo-first">Teixeira</span>
     </a>
 
     <nav class="nav-links">
@@ -48,8 +48,24 @@
                 stroke-linecap="round" stroke-linejoin="round" fill="none"/>
         </svg>
       </button>
+      <!-- Hamburger — only visible on mobile -->
+      <button id="menu-btn" class="ctrl-btn menu-btn" aria-label="Open menu" aria-expanded="false">
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+      </button>
     </div>
   </header>
+
+  <!-- ══ MOBILE MENU ══ -->
+  <div id="mobile-menu" aria-hidden="true">
+    <nav class="mobile-nav">
+      <a href="#about"    class="mobile-link" data-i18n="nav-about">About Me</a>
+      <a href="#projects" class="mobile-link" data-i18n="nav-projects">My Projects</a>
+      <a href="#contact"  class="mobile-link" data-i18n="nav-contact">Contact Me</a>
+      <a href="files/CV.pdf" target="_blank" rel="noopener" class="mobile-link mobile-link-cv" data-i18n="nav-resume">My Resume</a>
+    </nav>
+  </div>
 
   <!-- ══ HERO ══ -->
   <section id="hero">
@@ -58,7 +74,7 @@
       <h1 class="hero-headline">
         <span class="h-line-wrap"><span class="h-line" data-i18n="h1">Hi everyone!</span></span>
         <span class="h-line-wrap"><span class="h-line" data-i18n="h2">I'm</span></span>
-        <span class="h-line-wrap"><em class="h-line italic-line" data-i18n="h3">Diogo Teixeira</em></span>
+        <span class="h-line-wrap"><em class="h-line italic-line" data-i18n="h3">Diogo Teixeira.</em></span>
       </h1>
       <p class="hero-desc" data-i18n="desc">Future software engineer from Lisbon, Portugal. Currently in the last year of my BSc in Computer Science and Engineering, passionate about front-end and back-end development.</p>
     </div>
@@ -92,7 +108,7 @@
         </div>
       </div>
       <div class="skills-block reveal">
-        <h3 class="col-heading" data-i18n="about-s-title">Skills & Tools</h3>
+        <h3 class="col-heading" data-i18n="about-s-title">Skills &amp; Tools</h3>
         <div class="skills-row">
           <span class="skill-chip" data-tip="HTML"><i class="devicon-html5-plain colored"></i></span>
           <span class="skill-chip" data-tip="CSS"><i class="devicon-css3-plain colored"></i></span>

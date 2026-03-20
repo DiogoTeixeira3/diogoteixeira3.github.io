@@ -4,7 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,700;0,900;1,400&family=Playfair+Display:ital,wght@1,700&display=swap');
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 56px; }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    DESIGN TOKENS — DARK (default)
@@ -242,6 +242,7 @@ body.ready #footer       { transition-delay: .24s; }
   align-items: center;
   padding: clamp(36px, 6vh, 80px) clamp(16px, 4vw, 60px);
   border-bottom: 1px solid var(--border);
+  scroll-margin-top: 56px;
 }
 
 .hero-text {
@@ -824,26 +825,41 @@ form textarea { min-height: 110px; resize: vertical; }
    RESPONSIVE — MOBILE (≤ 860px)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 @media (max-width: 860px) {
-  /* Hero stacks vertically, photo goes on top */
+  /* Hero: full viewport, content spread evenly top to bottom */
   #hero {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto;
-    min-height: auto;
-    padding-top: 48px;
-    gap: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: calc(100svh - 56px);
+    padding: clamp(28px, 6vw, 48px) clamp(20px, 5vw, 36px);
+    gap: 0;
+    scroll-margin-top: 56px;
   }
 
+  /* Photo goes after text on mobile */
   .hero-photo-col {
-    order: -1;
     align-items: flex-start;
+    flex-shrink: 0;
   }
 
   .hero-photo-frame {
-    width: clamp(120px, 40vw, 200px);
+    width: clamp(110px, 36vw, 180px);
     border-radius: 12px;
   }
 
-  .hero-photo-caption { text-align: left; }
+  .hero-photo-caption {
+    text-align: left;
+    margin-top: 8px;
+  }
+
+  /* Text block fills remaining space, spreads internally */
+  .hero-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding-top: clamp(16px, 4vw, 28px);
+  }
 
   /* About stacks */
   .about-cols { grid-template-columns: 1fr; }
@@ -853,7 +869,7 @@ form textarea { min-height: 110px; resize: vertical; }
   .contact-right { min-width: auto; }
   .form-row { grid-template-columns: 1fr; }
 
-  /* Hide nav links — too cramped */
+  /* Hide nav links — hamburger handles navigation */
   .nav-links { display: none; }
 }
 
@@ -864,4 +880,110 @@ form textarea { min-height: 110px; resize: vertical; }
   .section-title  { font-size: clamp(1.9rem, 9vw, 3.5rem); }
   .projects-grid  { grid-template-columns: 1fr; }
   .proj-links     { flex-direction: column; gap: 4px; }
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   HAMBURGER BUTTON — mobile only
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.menu-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  padding: 0;
+}
+
+.menu-bar {
+  display: block;
+  width: 18px;
+  height: 1.5px;
+  background: var(--txt);
+  border-radius: 2px;
+  transition: transform .35s var(--ease), opacity .25s, width .3s;
+  transform-origin: center;
+}
+
+/* Animate bars → X when menu open */
+.menu-btn.active .menu-bar:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.menu-btn.active .menu-bar:nth-child(2) { opacity: 0; width: 0; }
+.menu-btn.active .menu-bar:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   MOBILE MENU OVERLAY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+#mobile-menu {
+  position: fixed;
+  inset: 56px 0 0 0;
+  background: var(--bg);
+  z-index: 99;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity .3s var(--ease), transform .3s var(--ease);
+  border-top: 1px solid var(--border);
+  /* Hidden on desktop */
+  display: none;
+}
+
+#mobile-menu.open {
+  pointer-events: auto;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobile-nav {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(24px, 6vw, 40px) clamp(20px, 6vw, 36px);
+}
+
+.mobile-link {
+  text-decoration: none;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: clamp(1.6rem, 8vw, 2.6rem);
+  letter-spacing: -.02em;
+  color: var(--txt-sub);
+  padding: clamp(10px, 2.5vw, 16px) 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: color .2s, padding-left .2s;
+}
+
+.mobile-link::after {
+  content: '';
+  font-size: .5em;
+  opacity: .35;
+  transition: opacity .2s, transform .2s;
+}
+
+.mobile-link:hover  { color: var(--txt); padding-left: 8px; }
+.mobile-link:hover::after { opacity: 1; transform: translate(3px,-3px); }
+
+/* CV link — distinct styling */
+.mobile-link-cv {
+  color: var(--txt);
+  border: 1px solid var(--border-strong);
+  border-bottom: 1px solid var(--border-strong);
+  margin-top: 20px;
+  padding-left: clamp(14px, 3vw, 22px);
+  padding-right: clamp(14px, 3vw, 22px);
+}
+.mobile-link-cv:hover {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+  padding-left: clamp(14px, 3vw, 22px);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SHOW HAMBURGER + MENU ON MOBILE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+@media (max-width: 860px) {
+  .menu-btn    { display: flex; }
+  #mobile-menu { display: block; }
 }
