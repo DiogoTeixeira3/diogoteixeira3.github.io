@@ -11,6 +11,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 56px; }
   --bg:            #0c0c0e;
   --bg-panel:      #111115;
   --bg-panel2:     #16161b;
+  --bg-nav:        rgba(12, 12, 14, 0.82);
   --border:        rgba(255,255,255,0.08);
   --border-strong: rgba(255,255,255,0.18);
   --txt:           #f2f0ec;
@@ -30,6 +31,7 @@ body.light {
   --bg:            #f7f5f0;
   --bg-panel:      #eeecea;
   --bg-panel2:     #e6e4e0;
+  --bg-nav:        rgba(247, 245, 240, 0.82);
   --border:        rgba(0,0,0,0.08);
   --border-strong: rgba(0,0,0,0.2);
   --txt:           #111010;
@@ -175,8 +177,8 @@ body.ready #footer       { transition-delay: .24s; }
   padding: 0 clamp(16px, 4vw, 60px);
   height: 56px;
   border-bottom: 1px solid var(--border);
-  background: var(--bg);
-  backdrop-filter: blur(12px);
+  background: var(--bg-nav);
+  backdrop-filter: blur(14px);
   gap: 16px;
 }
 
@@ -698,30 +700,28 @@ body.light .skill-chip .devicon-github-original { filter: invert(0); }
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .contact-wrap {
   display: grid;
-  grid-template-columns: 1fr auto;
-  gap: clamp(28px, 5vw, 80px);
+  grid-template-columns: 3fr 2fr;
+  gap: clamp(28px, 4vw, 64px);
   align-items: start;
   border-top: 1px solid var(--border);
   padding-top: clamp(28px, 3.5vw, 48px);
 }
 
-.contact-right { min-width: clamp(180px, 20vw, 300px); }
-
 .contact-tagline {
   font-family: var(--font-serif);
   font-style: italic;
   font-weight: 700;
-  font-size: clamp(1.1rem, 2.4vw, 2.4rem);
+  font-size: clamp(1.2rem, 2.6vw, 2.4rem);
   color: var(--accent-light);
   line-height: 1.2;
-  margin-bottom: clamp(16px, 2.2vw, 32px);
+  margin-bottom: clamp(20px, 2.5vw, 36px);
 }
 
-form { display: flex; flex-direction: column; gap: 10px; }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+form { display: flex; flex-direction: column; gap: clamp(10px, 1.5vw, 14px); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(10px, 1.5vw, 14px); }
 
 form input, form textarea {
-  width: 100%; padding: 11px 14px;
+  width: 100%; padding: 12px 16px;
   background: var(--bg-panel2);
   border: 1px solid var(--border);
   color: var(--txt);
@@ -731,7 +731,7 @@ form input, form textarea {
 }
 form input::placeholder, form textarea::placeholder { color: var(--txt-sub); }
 form input:focus, form textarea:focus { border-color: var(--accent); background: var(--bg-panel); }
-form textarea { min-height: 110px; resize: vertical; }
+form textarea { min-height: clamp(120px, 16vw, 160px); resize: vertical; }
 
 #form-status { font-size: .82rem; min-height: 1em; }
 .fs-ok  { color: #5dd47b; }
@@ -861,8 +861,10 @@ form textarea { min-height: 110px; resize: vertical; }
 
   /* Contact stacks */
   .contact-wrap { grid-template-columns: 1fr; }
-  .contact-right { min-width: auto; }
+  .contact-right { order: -1; }
   .form-row { grid-template-columns: 1fr; }
+  form input, form textarea { font-size: 1rem; }
+  .form-send { width: 100%; justify-content: center; }
 
   /* Hide nav links — hamburger handles navigation */
   .nav-links { display: none; }

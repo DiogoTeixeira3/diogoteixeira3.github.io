@@ -29,6 +29,7 @@ export function initContact() {
                 this.reset();
                 status.textContent = '✓ Message sent!';
                 status.className   = 'fs-ok';
+                setTimeout(() => { status.textContent = ''; status.className = ''; }, 5000);
             } else {
                 const data = await res.json();
                 const err  = data.errors

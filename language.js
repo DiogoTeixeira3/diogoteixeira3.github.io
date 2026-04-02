@@ -19,6 +19,8 @@ const T = {
         'about-e-title':'Education',
         'about-e-text': 'I began my English learning at British Isles, where I completed the B2 level. I finished my secondary education at EB 2/3 D. Martinho Vaz de Castelo Branco in Science and Technology. I am currently in the last year of my BSc in Computer Science and Engineering at ISEL, where I developed skills in both software and hardware development. I am ready to contribute and apply my knowledge in the professional environment.',
         'about-s-title':'Skills & Tools',
+        'btn-more':     'More',
+        'btn-close':    'Close',
         'contact-tag':  'Let\'s build something together.',
         'btn-send':     'Send Message',
         'ph-name':      'Name',
@@ -42,6 +44,8 @@ const T = {
         'about-e-title':'Educação',
         'about-e-text': 'Iniciei o percurso em inglês nas British Isles onde concluí o nível B2. Realizei o meu secundário na escola EB 2/3 D. Martinho Vaz de Castelo Branco, no curso de Ciências e Tecnologias. Atualmente estou a terminar a Licenciatura em Engenharia Informática e de Computadores no ISEL, onde desenvolvi competências em desenvolvimento de software e hardware. Estou pronto para contribuir e colocar em prática os meus conhecimentos no mercado de trabalho.',
         'about-s-title':'Competências & Ferramentas',
+        'btn-more':     'Mais',
+        'btn-close':    'Fechar',
         'contact-tag':  'Vamos construir algo juntos.',
         'btn-send':     'Enviar Mensagem',
         'ph-name':      'Nome',
@@ -63,7 +67,16 @@ function applyLang(l) {
         const key = el.getAttribute('data-ph');
         if (t[key] !== undefined) el.placeholder = t[key];
     });
+    document.querySelectorAll('.about-col .ver-mais').forEach(btn => {
+        const isExpanded = btn.closest('.about-col').classList.contains('expanded');
+        btn.textContent = isExpanded ? t['btn-close'] : t['btn-more'];
+    });
     document.documentElement.lang = l === 'pt' ? 'pt-PT' : 'en';
+}
+
+function setFlag(img, l) {
+    img.src = l === 'pt' ? 'https://flagcdn.com/w40/gb.png' : 'https://flagcdn.com/w40/pt.png';
+    img.alt = l === 'pt' ? 'EN' : 'PT';
 }
 
 export function initLanguage() {
@@ -71,12 +84,17 @@ export function initLanguage() {
     const img = document.getElementById('flag-img');
     if (!btn) return;
 
+    const saved = localStorage.getItem('lang');
+    if (saved && T[saved]) {
+        lang = saved;
+        setFlag(img, lang);
+        applyLang(lang);
+    }
+
     btn.addEventListener('click', () => {
         lang = lang === 'en' ? 'pt' : 'en';
-        img.src = lang === 'en'
-            ? 'https://flagcdn.com/w40/pt.png'
-            : 'https://flagcdn.com/w40/gb.png';
-        img.alt = lang === 'en' ? 'PT' : 'EN';
+        setFlag(img, lang);
+        localStorage.setItem('lang', lang);
         applyLang(lang);
     });
 }
