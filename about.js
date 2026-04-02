@@ -4,12 +4,14 @@
 
 let currentExpanded = null;
 let overlay = null;
+let currentOnKey = null;
 
 function collapseBlock(block) {
     block.classList.remove('expanded');
     const btn = block.querySelector('.ver-mais');
     if (btn) btn.textContent = 'More';
     if (overlay) { overlay.remove(); overlay = null; }
+    if (currentOnKey) { document.removeEventListener('keydown', currentOnKey); currentOnKey = null; }
     document.body.style.overflow = '';
     block.style.zIndex = '';
     currentExpanded = null;
@@ -31,18 +33,15 @@ function expandBlock(block) {
 
     overlay.addEventListener('click', () => collapseBlock(block), { once: true });
 
-    // Close on Escape
-    const onKey = (e) => {
-        if (e.key === 'Escape') { collapseBlock(block); document.removeEventListener('keydown', onKey); }
-    };
-    document.addEventListener('keydown', onKey);
+    currentOnKey = (e) => { if (e.key === 'Escape') collapseBlock(block); };
+    document.addEventListener('keydown', currentOnKey);
 
     block.style.zIndex = '2000';
     currentExpanded = block;
 }
 
 export function initAbout() {
-    document.querySelectorAll('.about-personal, .about-education').forEach(block => {
+    document.querySelectorAll('.about-col').forEach(block => {
         // Add ver-mais button if not already in HTML
         let btn = block.querySelector('.ver-mais');
         if (!btn) {
